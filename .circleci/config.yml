@@ -12,9 +12,9 @@ commands:
       xlarge:
         type: string
         default: xlarge
-      2xlarge:
+      twoxlarge:
         type: string
-        default: twoxlarge
+        default: 2xlarge
     steps:
       - checkout
       - restore_cache:
@@ -143,7 +143,7 @@ jobs:
   snarkvm:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - checkout
       - run:
@@ -153,7 +153,7 @@ jobs:
   algorithms:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: algorithms
@@ -302,7 +302,7 @@ jobs:
   circuit-types-integers:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: circuit/types/integers
@@ -482,7 +482,7 @@ jobs:
   ledger:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger
@@ -491,7 +491,7 @@ jobs:
   ledger-with-rocksdb:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: --features=rocks
@@ -501,7 +501,7 @@ jobs:
   ledger-with-valid-solutions:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: valid_solutions --features=test
@@ -511,7 +511,7 @@ jobs:
   ledger-authority:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/authority
@@ -520,7 +520,7 @@ jobs:
   ledger-block:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/block
@@ -538,7 +538,7 @@ jobs:
   ledger-narwhal:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/narwhal
@@ -547,7 +547,7 @@ jobs:
   ledger-narwhal-batch-certificate:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/narwhal/batch-certificate
@@ -556,7 +556,7 @@ jobs:
   ledger-narwhal-batch-header:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/narwhal/batch-header
@@ -565,7 +565,7 @@ jobs:
   ledger-narwhal-data:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/narwhal/data
@@ -574,7 +574,7 @@ jobs:
   ledger-narwhal-subdag:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/narwhal/subdag
@@ -583,7 +583,7 @@ jobs:
   ledger-narwhal-transmission:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/narwhal/transmission
@@ -592,7 +592,7 @@ jobs:
   ledger-narwhal-transmission-id:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/narwhal/transmission-id
@@ -601,7 +601,7 @@ jobs:
   ledger-puzzle:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/puzzle
@@ -610,7 +610,7 @@ jobs:
   ledger-puzzle-epoch:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/puzzle/epoch
@@ -619,7 +619,7 @@ jobs:
   ledger-query:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/query
@@ -628,7 +628,7 @@ jobs:
   ledger-store:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: --features=rocks
@@ -638,7 +638,7 @@ jobs:
   ledger-test-helpers:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: ledger/test-helpers
@@ -656,7 +656,7 @@ jobs:
   synthesizer:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: --lib --bins
@@ -666,7 +666,7 @@ jobs:
   synthesizer-integration:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: --test '*'
@@ -676,7 +676,7 @@ jobs:
   synthesizer-process:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: synthesizer/process
@@ -685,7 +685,7 @@ jobs:
   synthesizer-process-with-rocksdb:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: --features=rocks
@@ -695,7 +695,7 @@ jobs:
   synthesizer-program:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: --lib --bins
@@ -705,7 +705,7 @@ jobs:
   synthesizer-program-integration:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: --test '*' -- --skip keccak --skip psd --skip sha
@@ -715,7 +715,7 @@ jobs:
   synthesizer-program-integration-keccak:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: keccak --test '*'
@@ -725,7 +725,7 @@ jobs:
   synthesizer-program-integration-psd:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: psd --test '*'
@@ -735,7 +735,7 @@ jobs:
   synthesizer-program-integration-sha:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           flags: sha --test '*'
@@ -745,7 +745,7 @@ jobs:
   synthesizer-snark:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - run_serial:
           workspace_member: synthesizer/snark
@@ -772,7 +772,7 @@ jobs:
   wasm:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - checkout
       - setup_environment:
@@ -806,7 +806,7 @@ jobs:
   check-clippy:
     docker:
       - image: cimg/rust:1.76.0 # Attention - Change the MSRV in Cargo.toml and rust-toolchain as well
-    resource_class: << parameters.2xlarge >>
+    resource_class: << parameters.twoxlarge >>
     steps:
       - checkout
       - setup_environment:
