@@ -14,7 +14,7 @@ commands:
         default: xlarge
       2xlarge:
         type: string
-        default: 2xlarge
+        default: twoxlarge
     steps:
       - checkout
       - restore_cache:
