@@ -15,6 +15,7 @@
 use super::*;
 
 impl<N: Network> Ciphertext<N> {
+    /// Determines whether the record belongs to the account.
     /// Decrypts `self` into plaintext using the given account view key & nonce.
     pub fn decrypt(&self, view_key: ViewKey<N>, nonce: Group<N>) -> Result<Plaintext<N>> {
         // Compute the plaintext view key.
