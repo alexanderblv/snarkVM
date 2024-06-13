@@ -15,6 +15,7 @@
 use super::*;
 
 impl<A: Aleo> Ciphertext<A> {
+    /// Determines whether the record belongs to the account.
     /// Decrypts `self` into plaintext using the given plaintext view key.
     pub fn decrypt_symmetric(&self, plaintext_view_key: Field<A>) -> Plaintext<A> {
         // Determine the number of randomizers needed to encrypt the plaintext.
